@@ -1,0 +1,103 @@
+// ANSWER 1................................................................................................ 
+========================================
+// Register [POST]
+// Request
+{
+	"user_name":"Catur",
+	"user_email":"catur@tester.com"
+}
+
+// Response
+{
+	"http_code":201,
+	"signature_key":"cacaca",
+	"message":"Register success, please remember you SIGNATURE KEY"
+}
+
+
+========================================
+// Product [GET]
+{
+	"http_code":200,
+	"items":[{
+		"product_id":"EXT",
+		"name":"Exotic",
+		"price":"1000",
+		"stock":"10"
+	},{
+		"product_id":"EMS",
+		"name":"Emulsifier",
+		"price":"1200",
+		"stock":"10"
+	},{
+		"product_id":"FXD",
+		"name":"Fixadura",
+		"price":"1500",
+		"stock":"10"
+	},{
+		"product_id":"HSP",
+		"name":"Hand Soap",
+		"price":"800",
+		"stock":"50"
+	}]
+}
+
+
+========================================
+// Sales Insert [POST]
+// Request
+{
+  "signature_key": "cacaca",
+  "payment_type": "echannel",
+  "gross_amount": 9600,
+  "currency": "IDR",
+  "items" : [
+	{
+		"item_id": "EXT",
+		"qty":1,
+		"price": 1000,
+		"total": 1000
+	},
+	{
+		"item_id": "EMS",
+		"qty": 5,
+		"price": 1200,
+		"total": 6000
+	},
+	{
+		"item_id": "FXD",
+		"qty": 2,
+		"price": 1500,
+		"total": 3000
+	}
+  ]
+}
+
+// Response
+{
+	"http_code":201,
+	"sales_id":1,
+	"message":"Sales was inserted"
+}
+
+
+========================================
+// Sales List [POST]
+{
+	"signature_key": "cacaca"
+}
+
+// Response
+{
+	"http_code":200,
+	"items":[
+		{"sales_id":"1",
+		"signature_key":"cacaca",
+		"payment_type":"echannel",
+		"gross_amount":"9600",
+		"currency":"IDR",
+		"sales_status":"unpaid",
+		"created":"1564569486"
+	}],
+	"count":1
+}
