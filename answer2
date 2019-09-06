@@ -1,0 +1,91 @@
+// ANSWER 2................................................................................................ 
+========================================
+// Register [POST]
+// Request
+{
+	"user_name":"Arif",
+	"user_email":"arif@tester.com"
+}
+
+// Response
+{
+	"http_code":201,
+	"signature_key":"mamama",
+	"message":"Register success, please remember you SIGNATURE KEY"
+}
+
+
+========================================
+// Product [GET]
+{
+	"http_code":200,
+	"items":[{
+		"product_id":"EXT",
+		"name":"Exotic",
+		"price":"1000",
+		"stock":"10"
+	},{
+		"product_id":"EMS",
+		"name":"Emulsifier",
+		"price":"1200",
+		"stock":"10"
+	},{
+		"product_id":"FXD",
+		"name":"Fixadura",
+		"price":"1500",
+		"stock":"10"
+	},{
+		"product_id":"HSP",
+		"name":"Hand Soap",
+		"price":"800",
+		"stock":"50"
+	}]
+}
+
+
+========================================
+// Sales Insert [POST]
+// Request
+{
+  "signature_key": "mamama",
+  "payment_type": "echannel",
+  "gross_amount": 9600,
+  "currency": "IDR",
+  "items" : [
+	{
+		"item_id": "FXD",
+		"qty":2,
+		"price": 1500,
+		"total": 3000
+	}
+  ]
+}
+
+// Response
+{
+	"http_code":201,
+	"sales_id":1,
+	"message":"Sales was inserted"
+}
+
+
+========================================
+// Sales List [POST]
+{
+	"signature_key": "mamama"
+}
+
+// Response
+{
+	"http_code":200,
+	"items":[
+		{"sales_id":"1",
+		"signature_key":"mamama",
+		"payment_type":"echannel",
+		"gross_amount":"9600",
+		"currency":"IDR",
+		"sales_status":"unpaid",
+		"created":"1564569486"
+	}],
+	"count":1
+}
